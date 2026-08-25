@@ -5,13 +5,13 @@ function startBot() {
     host: 'toggrade.aternos.me',
     port: 21578,
     username: 'AFK_Bot',
-    version: false
+    version: '1.21.4' // 26.2 hatasını aşmak için sabit kararlı sürüm
   });
 
   let jumpInterval = null;
 
   bot.on('spawn', () => {
-    console.log('✅ Bot Aternos sunucusuna başarıyla bağlandı!');
+    console.log('✅ Bot 26.2 sunucusuna başarıyla bağlandı!');
   });
 
   bot.on('chat', (username, message) => {
