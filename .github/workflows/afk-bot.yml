@@ -1,0 +1,27 @@
+name: 7/24 AFK Bot
+
+on:
+  push:
+    branches: [ main, master ]
+  schedule:
+    # GitHub Actions'ın durmasını engellemek için her 5 saatte bir otomatik yeniden başlatır
+    - cron: '0 */5 * * *'
+  workflow_dispatch:
+
+jobs:
+  run-bot:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Repoyu Klonla
+        uses: actions/checkout@v3
+
+      - name: Node.js Kur
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Paketleri Yükle (Eski Bağımlılık Çakışma Önleyici)
+        run: npm install --legacy-peer-deps
+
+      - name: AFK Botu Başlat
+        run: node index.js
